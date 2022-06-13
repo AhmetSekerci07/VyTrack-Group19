@@ -1,6 +1,7 @@
 package com.Testing.VyTrack.Akerke;
 
 import com.Base.TestBase;
+import com.google.common.base.Verify;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
@@ -54,10 +55,10 @@ public class UserStories_14 extends TestBase {
 
         //3. during the creation, all required field should be displayed and Fuel type drop down should displayed as (Gasoline,Diesel,Electric,Hybird)
 
-       List <WebElement> allRequired = driver.findElements(By.className("section-content"));
+        List<WebElement> allRequired = driver.findElements(By.className("section-content"));
         System.out.println("allRequired.size() = " + allRequired.size());
 
-        for (WebElement each : allRequired){
+        for (WebElement each : allRequired) {
             System.out.println("each.isDisplayed() = " + each.isDisplayed());
 
         }
@@ -76,6 +77,19 @@ public class UserStories_14 extends TestBase {
 
         WebElement hybrid = driver.findElement(By.className("select2-result-label"));
         System.out.println("hybrid.isDisplayed() = " + hybrid.isDisplayed());
-    }
 
+         //  4.Verify that store manager or sales manager can Edit  the Vehicle model.
+           WebElement editBtn = driver.findElement(By.xpath("//button[@class='btn btn-success action-button']"));
+         System.out.println("editBtn.isDisplayed() = " + editBtn.isDisplayed());
+
+        //  5.Verify that store manager or sales manager can delete the Vehicle model.
+         WebElement deleteBtn = driver.findElement(By.xpath("(//a[@href='javascript:void(0);'])[2]"));
+         System.out.println("deleteBtn.isDisplayed() = " + deleteBtn.isDisplayed());
+
+         //  6. store manager or sales manager can reset the grid by click on Grid setting."
+        WebElement reset = driver.findElement(By.tagName("Reset"));
+        reset.click();
+
+
+    }
 }
