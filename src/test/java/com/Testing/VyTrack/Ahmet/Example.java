@@ -13,7 +13,7 @@ public class Example extends TestBase {
 
 
 1. Given user logins with valid credentials
-2. User clicks on log in button
+2. Then User clicks on log in button
 3. When user clicks on Vehicle header on the main Menu page
 4. Then user should be navigated to the vehicle page
 
