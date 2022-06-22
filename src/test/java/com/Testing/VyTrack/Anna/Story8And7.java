@@ -29,7 +29,6 @@ public class Story8And7 extends TestBase {
             3.Verfity that authorized user should be able to cancel Vehicle Contract
             4.Verify that authorized user should be able to Edit or delete the Vehicle Contract .
             5.Verify that authorized user should be able to reset the grid by click on Grid setting."
-
     */
 
     @Test
