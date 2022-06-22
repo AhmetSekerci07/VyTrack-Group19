@@ -63,7 +63,7 @@ public class UserStories_14 extends TestBase {
 
         }
 
-        WebElement fuelType = driver.findElement(By.className("select2-chosen"));
+        WebElement fuelType = driver.findElement(By.xpath("(//span[@class='select2-chosen'])[2]"));
         fuelType.click();
 
         WebElement gasoline = driver.findElement(By.className("select2-result-label"));
@@ -82,7 +82,9 @@ public class UserStories_14 extends TestBase {
            WebElement editBtn = driver.findElement(By.xpath("//button[@class='btn btn-success action-button']"));
          System.out.println("editBtn.isDisplayed() = " + editBtn.isDisplayed());
 
-        //  5.Verify that store manager or sales manager can delete the Vehicle model.
+
+         //  5.Verify that store manager or sales manager can delete the Vehicle model.
+        Thread.sleep(3000);
          WebElement deleteBtn = driver.findElement(By.xpath("(//a[@href='javascript:void(0);'])[2]"));
          System.out.println("deleteBtn.isDisplayed() = " + deleteBtn.isDisplayed());
 
