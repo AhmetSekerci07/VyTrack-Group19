@@ -3,6 +3,7 @@ package com.Testing.VyTrack.Akerke;
 import com.Base.TestBase;
 import com.google.common.base.Verify;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
@@ -77,20 +78,36 @@ public class UserStories_14 extends TestBase {
 
         WebElement hybrid = driver.findElement(By.className("select2-result-label"));
         System.out.println("hybrid.isDisplayed() = " + hybrid.isDisplayed());
+        hybrid.click();
 
          //  4.Verify that store manager or sales manager can Edit  the Vehicle model.
-           WebElement editBtn = driver.findElement(By.xpath("//button[@class='btn btn-success action-button']"));
-         System.out.println("editBtn.isDisplayed() = " + editBtn.isDisplayed());
+        WebElement editBtn =driver.findElement(By.xpath("(// button[@type='submit'])[1]"));
 
-
-         //  5.Verify that store manager or sales manager can delete the Vehicle model.
+        JavascriptExecutor executor = (JavascriptExecutor) driver;
+        executor.executeScript("arguments[0].scrollIntoView(true);", editBtn);
         Thread.sleep(3000);
-         WebElement deleteBtn = driver.findElement(By.xpath("(//a[@href='javascript:void(0);'])[2]"));
-         System.out.println("deleteBtn.isDisplayed() = " + deleteBtn.isDisplayed());
+        editBtn.click();
+        Thread.sleep(3000);
+      //  Thread.sleep(5000);
+     //   editBtn.click();
+       //  System.out.println("editBtn.isDisplayed() = " + editBtn.isDisplayed());
+
+
+        WebElement edit = driver.findElement(By.xpath("//a[@title='Edit Vehicles Model']"));
+        edit.click();
+
+        //  5.Verify that store manager or sales manager can delete the Vehicle model.
+       Thread.sleep(3000);
+         WebElement deleteBtn = driver.findElement(By.xpath("//a[@title='Delete Vehicles Model']"));
+         deleteBtn.click();
+         //System.out.println("deleteBtn.isDisplayed() = " + deleteBtn.isDisplayed());
+        WebElement text = driver.findElement(By.xpath("//a[@class='btn ok btn-danger']"));
+        text.click();
+        Thread.sleep(5000);
 
          //  6. store manager or sales manager can reset the grid by click on Grid setting."
-        WebElement reset = driver.findElement(By.tagName("Reset"));
-        reset.click();
+       WebElement reset = driver.findElement(By.xpath("//a[@title='Reset']"));
+       reset.click();
 
 
     }
