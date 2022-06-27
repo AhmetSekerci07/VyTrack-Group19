@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
@@ -54,9 +55,41 @@ public class US_6 {
 
        // Assert.assertEquals(driver.getTitle(), "All - Vehicle Costs - Entities - System - Car - Entities - System");
 
+        //choose a value
+        WebElement chooseValue=driver.findElement(By.xpath("//span[.='Choose a value...']"));
+        chooseValue.click();
+
+        //road assistance
+        WebElement roadAssistance=driver.findElement(By.xpath("//div[.='Road Assistance']"));
+        roadAssistance.click();
+
+        //total price
+        WebElement totalPrice= driver.findElement(By.xpath("(//input[@type='text'])[3]"));
+        totalPrice.sendKeys("200");
+
+        //choose month
+        WebElement chooseDate=driver.findElement(By.xpath("//input[@placeholder='Choose a date']"));
+        chooseDate.click();
+
+        Select monthDropdown=new Select(driver.findElement(By.xpath("//select[@class='ui-datepicker-month']")));
+        monthDropdown.selectByIndex(10);
+
+        //select year
+        Select yearDropdown= new Select(driver.findElement(By.xpath("//select[@class='ui-datepicker-year']")));
+        yearDropdown.selectByIndex(3);
+
+        //select a date
+        WebElement selectDate= driver.findElement(By.xpath("//a[.='20']"));
+        selectDate.click();
+
+        //cost description
+        WebElement costDescription=driver.findElement(By.xpath("//textarea[@name='custom_entity_type[CostDescriptions]']"));
+        costDescription.sendKeys("abc");
 
 
-    //Close and Save
+
+
+        //Close and Save
     WebElement saveCloseBtn=driver.findElement(By.xpath("//div[@class='btn-group pull-right']"));
         Assert.assertTrue(saveCloseBtn.isEnabled());
         saveCloseBtn.click();
