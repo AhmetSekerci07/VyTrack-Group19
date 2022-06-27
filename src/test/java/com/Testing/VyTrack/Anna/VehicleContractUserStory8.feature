@@ -1,4 +1,5 @@
 Feature:
+ @
   Scenario: Authorized User can see all vehicle contracts on the grid.
     Given Authorized User is on fleet management page
     When Authorized User clicks on fleet module
