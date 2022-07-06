@@ -32,20 +32,20 @@ public class UserStory_5 {
         fleetBtn.click();
 
         WebElement vehicleCost = Driver.getDriver().findElement(By.xpath("//*[@id='main-menu']/ul/li[1]/div/div/ul/li[5]"));
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         vehicleCost.click();
 
 //        1. truck driver see all cars' cost information on the Vehicle Costs page.
 
         WebElement setting = Driver.getDriver().findElement(By.xpath("//i[@class='fa-cog hide-text']"));
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         setting.click();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
         WebElement selectID = Driver.getDriver().findElement(By.xpath("//input[@id='column-c136']"));
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         selectID.click();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
         WebElement table = Driver.getDriver().findElement(By.xpath("//table[@class='grid table-hover table table-bordered table-condensed']"));
         System.out.println("table.isDisplayed() = " + table.isDisplayed());
@@ -53,9 +53,9 @@ public class UserStory_5 {
 //        2. truck driver can create Vehicle cost.
 
         WebElement createVehicleCostBtn = Driver.getDriver().findElement(By.xpath("//a[@class='btn main-group btn-primary pull-right ']"));
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         createVehicleCostBtn.click();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
 
 //        3. truck driver can cancel Vehicle cost.
@@ -68,7 +68,7 @@ public class UserStory_5 {
 
         WebElement threeDots = Driver.getDriver().findElement(By.xpath("//div[@class='dropdown']/a[1]"));
         System.out.println("threeDots.isDisplayed() = " + threeDots.isDisplayed());
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
         Actions actionDots = new Actions(Driver.getDriver());
         actionDots.moveToElement(threeDots).perform();
@@ -77,7 +77,7 @@ public class UserStory_5 {
         System.out.println("editBtn.isDisplayed() = " + editBtn.isDisplayed());
 
         Actions actionEdit = new Actions(Driver.getDriver());
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         actionEdit.moveToElement(threeDots).perform();
         editBtn.click();
         Thread.sleep(2000);
@@ -87,7 +87,7 @@ public class UserStory_5 {
 
         WebElement threeDots2 = Driver.getDriver().findElement(By.xpath("//div[@class='dropdown']/a[1]"));
         System.out.println("threeDots.isDisplayed() = " + threeDots2.isDisplayed());
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
         Actions actionDots2 = new Actions(Driver.getDriver());
         actionDots2.moveToElement(threeDots2).perform();
@@ -97,7 +97,7 @@ public class UserStory_5 {
 
         Actions actionDelete = new Actions(Driver.getDriver());
         actionDelete.moveToElement(threeDots2).perform();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         deleteBtn.click();
 
         WebElement yesDeleteBtn = Driver.getDriver().findElement(By.xpath("//a[@class='btn ok btn-danger']"));
@@ -106,26 +106,34 @@ public class UserStory_5 {
 //        6.  truck driver can add Attachment on General information by click on any of the car on the grid.
 
         WebElement anyCar = Driver.getDriver().findElement(By.xpath("(//tr[@class='grid-row row-click-action'])[1]"));
-        Thread.sleep(3000);
+        Thread.sleep(2000);
         anyCar.click();
-        Thread.sleep(3000);
+        Thread.sleep(2000);
 
         WebElement attachBtn = Driver.getDriver().findElement(By.xpath("//a[@title='Add attachment']"));
         attachBtn.click();
-        Thread.sleep(3000);
 
-        WebElement chooseBtn = Driver.getDriver().findElement(By.xpath("//span[@class='action']"));
-        //Thread.sleep(3000);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), 20);
+        WebElement loaderMask = Driver.getDriver().findElement(By.cssSelector("div[class='loader-mask shown']"));
+        wait.until(ExpectedConditions.invisibilityOf(loaderMask));
 
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(),10);
-        wait.until(ExpectedConditions.elementToBeClickable(chooseBtn));
+        WebElement chooseBtn = Driver.getDriver().findElement(By.xpath("//input[@type='file']"));
 
         String path= "C:\\Users\\irina\\OneDrive\\Desktop\\word-image-219.jpeg";
         chooseBtn.sendKeys(path);
 
+        WebElement saveBtn = Driver.getDriver().findElement(By.xpath("//button[@class='btn btn-primary']"));
+        saveBtn.click();
+
 //        7. truck driver can reset the grid by click on Grid setting
 
-        WebElement resetBtn = Driver.getDriver().findElement(By.xpath("//a[@title='Reset']"));
+        Actions actionFleet = new Actions(Driver.getDriver());
+        actionFleet.moveToElement(fleetBtn).perform();
+
+        Thread.sleep(2000);
+        vehicleCost.click();
+
+        WebElement resetBtn = Driver.getDriver().findElement(By.xpath("//div[@class='actions-panel pull-right form-horizontal']/div/a[3]"));
         resetBtn.click();
 
         Driver.getDriver().quit();
